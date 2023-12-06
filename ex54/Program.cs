@@ -32,7 +32,7 @@ namespace ex54
                 {
                     case "1":
                         hospital.SortByName();
-                        break;
+                        break; 
 
                     case "2":
                         hospital.SortByAge();
