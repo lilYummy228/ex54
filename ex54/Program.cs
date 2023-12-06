@@ -21,7 +21,7 @@ namespace ex54
             {
                 hospital.ShowPatients();
 
-                Console.WriteLine($"Больница\n" +
+                Console.Write($"Больница\n" +
                     $"{CommandSortByName} - отсортировать больных по имени\n" +
                     $"{CommandSortByAge} - отсортировать больных по возрасту\n" +
                     $"{CommandRemoveByDisease} - вывести больных с заболеванием\n" +
