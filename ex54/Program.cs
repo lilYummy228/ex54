@@ -16,11 +16,10 @@ namespace ex54
             bool isOpen = true;
 
             Hospital hospital = new Hospital();
-            List<Patient> patients = hospital.GivePatients();
 
             while (isOpen)
             {
-                hospital.ShowPatients(patients);
+                hospital.ShowPatients();
 
                 Console.WriteLine($"Больница\n" +
                     $"{CommandSortByName} - отсортировать больных по имени\n" +
@@ -32,15 +31,15 @@ namespace ex54
                 switch (Console.ReadLine())
                 {
                     case "1":
-                        hospital.SortByName(ref patients);
+                        hospital.SortByName();
                         break;
 
                     case "2":
-                        hospital.SortByAge(ref patients);
+                        hospital.SortByAge();
                         break;
 
                     case "3":
-                        hospital.RemoveByDisease(ref patients);
+                        hospital.RemoveByDisease();
                         break;
 
                     case "4":
@@ -67,25 +66,25 @@ namespace ex54
             AddPatients();
         }
 
-        public void SortByName(ref List<Patient> patients)
+        public void SortByName()
         {
             var sortedPatients = _patients.OrderBy(patient => patient.Name).ToList();
-            patients = sortedPatients;
+            _patients = sortedPatients;
         }
 
-        public void SortByAge(ref List<Patient> patients)
+        public void SortByAge()
         {
             var sortedPatients = _patients.OrderBy(patient => patient.Age).ToList();
-            patients = sortedPatients;
+            _patients = sortedPatients;
         }
 
-        public void RemoveByDisease(ref List<Patient> patients)
+        public void RemoveByDisease()
         {
             Console.WriteLine("Напишите название заболевания: ");
             string disease = Console.ReadLine();
 
             var removedPatients = _patients.Where(patient => patient.Disease != disease).ToList();
-            patients = removedPatients;
+            _patients = removedPatients;
         }
 
         public List<Patient> GivePatients()
@@ -93,14 +92,14 @@ namespace ex54
             return _patients;
         }
 
-        public void ShowPatients(List<Patient> patients)
+        public void ShowPatients()
         {
             Console.SetCursorPosition(0, 12);
             Console.WriteLine("Список больных: ");
 
-            for (int i = 0; i < patients.Count; i++)
+            for (int i = 0; i < _patients.Count; i++)
             {
-                patients[i].ShowInfo();
+                _patients[i].ShowInfo();
             }
 
             Console.SetCursorPosition(0, 0);
