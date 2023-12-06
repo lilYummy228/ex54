@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ex54
 {
@@ -15,9 +13,10 @@ namespace ex54
             const string CommandRemoveByDisease = "3";
             const string CommandExit = "4";
 
+            bool isOpen = true;
+
             Hospital hospital = new Hospital();
             List<Patient> patients = hospital.GivePatients();
-            bool isOpen = true;
 
             while (isOpen)
             {
