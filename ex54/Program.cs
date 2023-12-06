@@ -87,11 +87,6 @@ namespace ex54
             _patients = removedPatients;
         }
 
-        public List<Patient> GivePatients()
-        {
-            return _patients;
-        }
-
         public void ShowPatients()
         {
             Console.SetCursorPosition(0, 12);
