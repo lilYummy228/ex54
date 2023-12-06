@@ -30,19 +30,19 @@ namespace ex54
 
                 switch (Console.ReadLine())
                 {
-                    case "1":
+                    case CommandSortByName:
                         hospital.SortByName();
                         break; 
 
-                    case "2":
+                    case CommandSortByAge:
                         hospital.SortByAge();
                         break;
 
-                    case "3":
+                    case CommandRemoveByDisease:
                         hospital.RemoveByDisease();
                         break;
 
-                    case "4":
+                    case CommandExit:
                         isOpen = false;
                         break;
 
@@ -83,8 +83,15 @@ namespace ex54
             Console.WriteLine("Напишите название заболевания: ");
             string disease = Console.ReadLine();
 
-            var removedPatients = _patients.Where(patient => patient.Disease != disease).ToList();
-            _patients = removedPatients;
+            var sortedPatients = _patients.Where(patient => patient.Disease == disease).ToList();
+
+            Console.Clear();
+            Console.WriteLine($"Пациенты с заболеванием {disease}: ");
+
+            foreach (Patient patient in sortedPatients)
+            {
+                patient.ShowInfo();
+            }
         }
 
         public void ShowPatients()
