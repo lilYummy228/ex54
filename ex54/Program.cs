@@ -16,11 +16,10 @@ namespace ex54
             bool isOpen = true;
 
             Hospital hospital = new Hospital();
-            List<Patient> patients = hospital.GetPatients();
 
             while (isOpen)
             {
-                hospital.ShowPatients(patients);
+                hospital.ShowPatients();
 
                 Console.Write($"Больница\n" +
                     $"{CommandSortByName} - отсортировать больных по имени\n" +
@@ -32,11 +31,11 @@ namespace ex54
                 switch (Console.ReadLine())
                 {
                     case CommandSortByName:
-                        hospital.SortByName(ref patients);
+                        hospital.SortByName();
                         break; 
 
                     case CommandSortByAge:
-                        hospital.SortByAge(ref patients);
+                        hospital.SortByAge();
                         break;
 
                     case CommandRemoveByDisease:
@@ -72,16 +71,16 @@ namespace ex54
             return _patients;
         }
 
-        public void SortByName(ref List<Patient> patients)
+        public void SortByName()
         {
-            var sortedPatients = patients.OrderBy(patient => patient.Name).ToList();
-            patients = sortedPatients;
+            var sortedPatients = _patients.OrderBy(patient => patient.Name).ToList();
+            _patients = sortedPatients;
         }
 
-        public void SortByAge(ref List<Patient> patients)
+        public void SortByAge()
         {
-            var sortedPatients = patients.OrderBy(patient => patient.Age).ToList();
-            patients = sortedPatients;
+            var sortedPatients = _patients.OrderBy(patient => patient.Age).ToList();
+            _patients = sortedPatients;
         }
 
         public void ShowByDisease()
@@ -93,20 +92,30 @@ namespace ex54
 
             Console.Clear();
 
-            ShowPatients(sortedPatients);
+            ShowPatients(sortedPatients, disease);
         }
 
-        public void ShowPatients(List<Patient> patients)
+        public void ShowPatients()
         {
-            Console.SetCursorPosition(0, 12);
+            Console.SetCursorPosition(0, 10);
             Console.WriteLine("Список больных: ");
+
+            for (int i = 0; i < _patients.Count; i++)
+            {
+                _patients[i].ShowInfo();
+            }
+
+            Console.SetCursorPosition(0, 0);
+        }
+
+        public void ShowPatients(List<Patient> patients, string disease)
+        {
+            Console.WriteLine($"Список больных болезнью {disease}: ");
 
             for (int i = 0; i < patients.Count; i++)
             {
                 patients[i].ShowInfo();
             }
-
-            Console.SetCursorPosition(0, 0);
         }
 
         private void AddPatients()
