@@ -10,7 +10,7 @@ namespace ex54
         {
             const string CommandSortByName = "1";
             const string CommandSortByAge = "2";
-            const string CommandRemoveByDisease = "3";
+            const string CommandShowByDisease = "3";
             const string CommandExit = "4";
 
             bool isOpen = true;
@@ -24,7 +24,7 @@ namespace ex54
                 Console.Write($"Больница\n" +
                     $"{CommandSortByName} - отсортировать больных по имени\n" +
                     $"{CommandSortByAge} - отсортировать больных по возрасту\n" +
-                    $"{CommandRemoveByDisease} - вывести больных с заболеванием\n" +
+                    $"{CommandShowByDisease} - вывести больных с заболеванием\n" +
                     $"{CommandExit} - выйти из программы\n" +
                     $"Ваш ввод: ");
 
@@ -38,7 +38,7 @@ namespace ex54
                         hospital.SortByAge();
                         break;
 
-                    case CommandRemoveByDisease:
+                    case CommandShowByDisease:
                         hospital.ShowByDisease();
                         break;
 
