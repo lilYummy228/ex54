@@ -96,9 +96,7 @@ namespace ex54
             Console.WriteLine("Список больных: ");
 
             for (int i = 0; i < _patients.Count; i++)
-            {
                 _patients[i].ShowInfo();
-            }
 
             Console.SetCursorPosition(0, 0);
         }
@@ -108,9 +106,7 @@ namespace ex54
             Console.WriteLine($"Список больных болезнью {disease}: ");
 
             for (int i = 0; i < patients.Count; i++)
-            {
                 patients[i].ShowInfo();
-            }
         }
 
         private void AddPatients()
