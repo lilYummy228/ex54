@@ -66,11 +66,6 @@ namespace ex54
             AddPatients();
         }
 
-        public List<Patient> GetPatients()
-        {
-            return _patients;
-        }
-
         public void SortByName()
         {
             var sortedPatients = _patients.OrderBy(patient => patient.Name).ToList();
